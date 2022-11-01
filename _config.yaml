@@ -22,7 +22,6 @@ plugins:
 
 asciidoc: {}
 asciidoctor:
-  base_dir: :docdir
   safe: unsafe
   attributes:
     imagesdir: /assets/images
