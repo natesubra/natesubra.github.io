@@ -16,7 +16,7 @@ jobs:
         with:
           ruby-version: '3.1'
           bundler-cache: true
-      - run: apt-get install -yq graphviz
+      - run: sudo apt-get install -yq graphviz default-jre
       - run: bundle install && bundle exec jekyll build
 
       - name: deploy
