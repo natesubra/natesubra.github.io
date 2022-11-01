@@ -1,0 +1,35 @@
+title: natesubra
+description: >
+  A blog by Nate Subra
+baseurl: ""
+url: "https://natesubra.github.io"
+github_username: natesubra
+
+author: Nate Subra
+
+keep_files:
+  - /assets
+
+plugins:
+- asciidoctor-diagram
+- asciidoctor-mermaid
+- asciidoctor-kroki
+- jekyll-asciidoc
+- jekyll-redirect-from
+- jekyll-feed
+- jekyll-archives
+- jekyll-sitemap
+
+asciidoc: {}
+asciidoctor:
+  base_dir: :docdir
+  safe: unsafe
+  attributes:
+    imagesdir: /assets/images
+    icons: font
+    source-highlighter: rouge
+    source-linenums-option: _
+    sectanchors: _
+    experimental: _
+    rouge-style: github
+    stylesdir: /css

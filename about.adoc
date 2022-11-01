@@ -1,0 +1,14 @@
+= About
+:layout: default
+:page-permalink: /about/
+
+== Hello!
+
+image:https://github.com/natesubra.png[role=about-ava,width=128] 
+
+I'm Nate Subra, a Security Engineer who loves programming and all things related to security.
+You can find me on https://github.com/natesubra[GitHub].
+
+If you want to contact me, please write an e-mail (address is on the GitHub profile).
+
+Code samples on this blog are dual licensed under MIT OR Apache-2.0.
