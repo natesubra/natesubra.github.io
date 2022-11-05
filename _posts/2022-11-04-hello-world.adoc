@@ -49,7 +49,7 @@ What does that look like?
 
 Something like this:
 
-image:assets\images\2022-11-01_hello-world-vscode.png[{half-width}]
+image:2022-11-01_hello-world-vscode.png[alt=Screenshot,width=640,height=480]
 
 === Jekyll (and jekyll-asciidoc)
 
