@@ -33,7 +33,9 @@ include::assets/2022-11-01_examplecode.sh[]
 +
 IMPORTANT: This an admonition
 
-Just to name a few. To get an idea of the capabilities of AsciiDoc, I recommend checking out the https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[Quick Reference]
+Just to name a few.
+
+To get more of an idea of the capabilities of AsciiDoc, I recommend checking out the https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[Quick Reference]
 
 === Visual Studio Code
 
