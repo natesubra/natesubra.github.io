@@ -1,12 +1,76 @@
 = Hello World
-:page-category: Miscellaneous
 :page-tags: [Miscellaneous]
 
-== Example Source Block
+== It's ALIVE
 
-[source,shell]
-----
-#!/usr/bin/env bash
+It's been a long time since I've blogged or written anything really. I'm aiming to change that with this blog.
 
-printf 'Hello World'
+My tentative plan is to talk about my thoughts around Red Teaming and the field I work. I'd also like to cover cool pieces of tech.
+
+== The Blog
+
+I wanted to talk about the technology this blog is built on.
+
+=== AsciiDoc
+
+This post is written in https://asciidoc.org/[AsciiDoc]. AsciiDoc is a markup language I discovered a few years ago while looking for a better way to write documentation. I'd describe it as more powerful that Markdown, but not so insane as LaTeX. 
+
+I write most of my work/public based documentation in Markdown. But for complex projects and personal projects I generally will choose AsciiDoc due to it's feature set and enhanced formatting capabilities. There's also the fantastic https://github.com/asciidoctor/asciidoctor-pdf[Asciidoctor PDF] toolchain. Which I've used to generate client documentation (maybe a post on that someday)
+
+Some features AsciiDoc provides:
+
+. Automatic ordering of lists (_I didn't type these numbers_)
+. Being able to reference other files other files 
++
+_the code below is just a link, the content is pulled in dynamically, you can even select specific lines_
++
+.A swell looking label
+[source,shell,linenums]
 ----
+include::assets/2022-11-01_examplecode.sh[]
+----
+. Macros and text replacement
+. Admonitions
++
+IMPORTANT: This an admonition
++
+NOTE: This is one too
+
+Just to name a few. To get an idea of the capabilities of AsciiDoc, I recommend checking out the https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[Quick Reference]
+
+=== Visual Studio Code
+
+I do my actual writing in https://code.visualstudio.com[VSCode]
+
+I use the https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode[AsciiDoc] to provide linting, syntax highlighting, and live preview of my content.
+
+I use the https://marketplace.visualstudio.com/items?itemName=ban.spellright[Spell Right] to further mitigate my fat fingers.
+
+What does that look like?
+
+Something like this:
+
+image:assets\images\2022-11-01_hello-world-vscode.png[{half-width}]
+
+=== Jekyll (and jekyll-asciidoc)
+
+https://jekyllrb.com[Jekyll] is a static website generation tool. It converts markdown
+to html to allow for simple and seamless creation of content. By adding the https://github.com/asciidoctor/jekyll-asciidoc[Jekyll AsciiDoc] plugin, I can write in AsciiDoc, and it renders it to HTML. Letting me have the power and flexibility of AsciiDoc, while being able to use a well known and supported static site generator.
+
+=== GitHub
+
+I use https://pages.github.com[GitHub Pages] to host the content of this site. That means the complete source code is available on https://github.com/natesubra/natesubra.github.io[GitHub]. 
+
+If you want to see what this post looked like before it was rendered to HTML, you can see it in AsciiDoc raw format https://raw.githubusercontent.com/natesubra/natesubra.github.io/main/_posts/2022-11-01-hello-world.adoc[here].
+
+The pages themselves are built by https://github.com/features/actions[GitHub Actions]. 
+
+=== CloudFlare
+
+I use https://www.cloudflare.com[CloudFlare] as my domain registrar and to manage DNS for my domain.
+
+Combining this with GitHub Pages allows me to use my domain as a landing page. This site is also available at https://natesubra.github.io
+
+== Wrapping things up
+
+Thanks for reading if you've made it this far. I mostly right for myself but I hope others find it information/entertaining.
