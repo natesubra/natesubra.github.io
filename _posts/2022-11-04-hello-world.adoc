@@ -32,8 +32,6 @@ include::assets/2022-11-01_examplecode.sh[]
 . Admonitions
 +
 IMPORTANT: This an admonition
-+
-NOTE: This is one too
 
 Just to name a few. To get an idea of the capabilities of AsciiDoc, I recommend checking out the https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[Quick Reference]
 
