@@ -52,12 +52,12 @@ Something like this:
 
 .My VSCode Setup
 [#vscode-setup,link=https://natesubra.com/assets/images/2022-11-01_hello-world-vscode.png]
-image::2022-11-01_hello-world-vscode_thumb.png[alt="My VSCode Setup"]
+image::2022-11-01_hello-world-vscode_thumb.png[alt="My VSCode Setup",align=center]
 
 === Jekyll (and jekyll-asciidoc)
 
 https://jekyllrb.com[Jekyll] is a static website generation tool. It converts markdown
-to html to allow for simple and seamless creation of content. By adding the https://github.com/asciidoctor/jekyll-asciidoc[Jekyll AsciiDoc] plugin, I can write in AsciiDoc, and it renders it to HTML. Letting me have the power and flexibility of AsciiDoc, while being able to use a well known and supported static site generator.
+to html to allow for simple and seamless creation of content. By adding the https://github.com/asciidoctor/jekyll-asciidoc[Jekyll AsciiDoc] plugin, I can write in AsciiDoc, and it renders it to HTML. Letting me have the power and flexibility of AsciiDoc, while simultaneously being able to use a well known and supported static site generator.
 
 === GitHub
 
@@ -70,6 +70,8 @@ The pages themselves are built by https://github.com/features/actions[GitHub Act
 === CloudFlare
 
 I use https://www.cloudflare.com[CloudFlare] as my domain registrar and to manage DNS for my domain.
+
+CloudFlare also provides CDN capabilities. They also terminate SSL, although the source pages are also protected via GitHub.
 
 Combining this with GitHub Pages allows me to use my domain as a landing page. This site is also available at https://natesubra.github.io
 
