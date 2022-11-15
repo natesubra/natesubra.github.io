@@ -51,8 +51,8 @@ What does that look like?
 Something like this:
 
 .My VSCode Setup
-[#vscode-setup,link=https://natesubra.com/assets/images/2022-11-01_hello-world-vscode.png]
-image::2022-11-01_hello-world-vscode_thumb.png[alt="My VSCode Setup",align=center]
+[#vscode-setup,link=https://natesubra.com/assets/images/hello-world-vscode.png]
+image::hello-world-vscode_thumb.png[alt="My VSCode Setup",align=center]
 
 === Jekyll (and jekyll-asciidoc)
 
