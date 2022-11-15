@@ -2,28 +2,31 @@
 
 == It's ALIVE
 
-It's been a long time since I've blogged or written anything really. I'm aiming to change that with this blog.
+It's been a long time since I've blogged or written anything publicly. I'm aiming to change that with this blog.
 
-My tentative plan is to talk about my thoughts around Red Teaming and the field I work. I'd also like to cover cool pieces of tech.
+My tentative plan is to talk about my thoughts around Red Teaming and the various information security fields I work in. I also plan to talk about some of the tech I work with and share my security research publicly when possible.
 
-== The Blog
+== The blog itself
 
-I wanted to talk about the technology this blog is built on.
+I wanted to talk about the technology this blog is built on. I've utilized many of the components for years and run many of the components in a professional setting.
 
 === AsciiDoc
 
-This post is written in https://asciidoc.org/[AsciiDoc]. AsciiDoc is a markup language I discovered a few years ago while looking for a better way to write documentation. I'd describe it as more powerful that Markdown, but not so insane as LaTeX. 
+This post is written in https://asciidoc.org/[AsciiDoc]. AsciiDoc is a markup language I discovered a few years ago while looking for a better way to generate technical documentation. I'd describe it as being more powerful that Markdown, but not as complex as LaTeX.
 
-I write most of my work/public based documentation in Markdown. But for complex projects and personal projects I generally will choose AsciiDoc due to it's feature set and enhanced formatting capabilities. There's also the fantastic https://github.com/asciidoctor/asciidoctor-pdf[Asciidoctor PDF] toolchain. Which I've used to generate client documentation (maybe a post on that someday)
+Generally I write most of my public based documentation in Markdown. Markdown is the defacto standard for many technical documents. But for complex projects and personal projects I generally choose AsciiDoc for it's feature set and enhanced formatting capabilities. 
 
-Some features AsciiDoc provides:
+There's also the fantastic https://github.com/asciidoctor/asciidoctor-pdf[Asciidoctor PDF] toolchain. Which I've used to generate client documentation and reports (maybe a post on that someday)
+
+Some of the features that AsciiDoc provides:
 
 . Automatic ordering of lists (_I didn't type these numbers_)
-. Being able to reference other files other files 
+. Being able to reference/include other files with syntax highlighting
 +
-_the code below is just a link, the content is pulled in dynamically, you can even select specific lines_
+----
+The code below exists in my repo, but the content rendered here is inserted dynamically at generation. This allows me to reference code in my documentation, without requiring me to keep a copy in my post.
+----
 +
-.A swell looking label
 [source,shell,linenums]
 ----
 include::assets/2022-11-01_examplecode.sh[]
@@ -31,15 +34,13 @@ include::assets/2022-11-01_examplecode.sh[]
 . Macros and text replacement
 . Admonitions
 +
-IMPORTANT: This an admonition
+WARNING: This an admonition
 
-Just to name a few.
-
-To get more of an idea of the capabilities of AsciiDoc, I recommend checking out the https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[Quick Reference]
+For additional details regarding AsciiDoc capabilities, I recommend peeking at the https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[Quick Reference]
 
 === Visual Studio Code
 
-I do my actual writing in https://code.visualstudio.com[VSCode]
+I write my posts using https://code.visualstudio.com[VSCode]
 
 I use the https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode[AsciiDoc] to provide linting, syntax highlighting, and live preview of my content.
 
@@ -49,7 +50,9 @@ What does that look like?
 
 Something like this:
 
-image:2022-11-01_hello-world-vscode.png[alt=Screenshot,width=640,height=480]
+.My VSCode Setup
+[#vscode-setup,link=https://natesubra.com/assets/images/2022-11-01_hello-world-vscode.png]
+image::2022-11-01_hello-world-vscode_thumb.png[alt="My VSCode Setup"]
 
 === Jekyll (and jekyll-asciidoc)
 
