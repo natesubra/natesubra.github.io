@@ -6,8 +6,7 @@
 
 image:https://github.com/natesubra.png[role=about-ava,width=128] 
 
-I'm Nate Subra, a Security Engineer who loves programming and all things related to security.
-You can find me on https://github.com/natesubra[GitHub].
+I'm Nate Subra, a Security Engineer who loves programming and all things related to security. You can find me on https://github.com/natesubra[GitHub], as well as various social media sites (see the navbar below).
 
 If you want to contact me, please send me an email: 
 
