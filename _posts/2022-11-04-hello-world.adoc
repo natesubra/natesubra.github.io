@@ -60,7 +60,7 @@ to html to allow for simple and seamless creation of content. By adding the http
 
 I use https://pages.github.com[GitHub Pages] to host the content of this site. That means the complete source code is available on https://github.com/natesubra/natesubra.github.io[GitHub]. 
 
-If you want to see what this post looked like before it was rendered to HTML, you can see it in AsciiDoc raw format https://raw.githubusercontent.com/natesubra/natesubra.github.io/main/_posts/2022-11-01-hello-world.adoc[here].
+If you want to see what this post looked like before it was rendered to HTML, you can see it in AsciiDoc raw format https://raw.githubusercontent.com/natesubra/natesubra.github.io/main/_posts/2022-11-04-hello-world.adoc[here].
 
 The pages themselves are built by https://github.com/features/actions[GitHub Actions]. 
 
