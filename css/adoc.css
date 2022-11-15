@@ -54,7 +54,7 @@ h1 {
 }
 h2, h3, .sidebarblock>.content>.title {
     font-size: 1.5rem;
-    margin-top: 1rem;
+    margin-top: 2rem;
     margin-bottom: .5rem;
 }
 .sidebarblock>.content>.title {
