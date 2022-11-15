@@ -1,6 +1,10 @@
 /* Reduced & modified default Asciidoctor default stylesheet */
 
-p, ol, ul, dl, hr, table, .listingblock, .imageblock, .sidebarblock {
+.imageblock {
+    text-align: center;
+}
+
+p, ol, ul, dl, hr, table, .listingblock, .sidebarblock {
     margin-bottom: 0.5em;
 }
 .listingblock {
