@@ -8,7 +8,8 @@ github_username: natesubra
 author: Nate Subra
 
 keep_files:
-  - /assets
+  - assets
+  - assets/images
 
 plugins:
 - asciidoctor-diagram
