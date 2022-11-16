@@ -78,12 +78,7 @@ to html to allow for simple and seamless creation of content. By adding the http
 
 I use https://pages.github.com[GitHub Pages] to host the content of this site. The means the complete source code is available on https://github.com/natesubra/natesubra.github.io[GitHub].
 
-https://github.com/features/actions[GitHub Actions] runs the build (included below) and saves the rendered content to the `gh-pages` branch.
-
-[source,yml,linenums]
-....
-include::.github/workflows/gh-pages.yml[]
-....
+https://github.com/features/actions[GitHub Actions] runs the build and saves the rendered content to the `gh-pages` branch.
 
 You can browse the rendered content in the `gh-pages` branch https://github.com/natesubra/natesubra.github.io/tree/gh-pages[here].
 
