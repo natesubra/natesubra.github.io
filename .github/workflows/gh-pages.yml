@@ -18,7 +18,7 @@ jobs:
           bundler-cache: true
       - run: sudo apt-get update
       - run: DEBIAN_FRONTEND=noninteractive sudo apt-get install -yq graphviz
-      - run: sudo npm install -g mermaid mermaid.cli
+      - run: sudo npm install -g @mermaid-js/mermaid-cli
       - run: bundle install && bundle exec jekyll build
 
       - name: deploy
