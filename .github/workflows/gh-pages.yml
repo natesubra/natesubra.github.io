@@ -16,8 +16,8 @@ jobs:
         with:
           ruby-version: '3.1'
           bundler-cache: true
-      - run: apt-get update
-      - run: DEBIAN_FRONTEND=noninteractive apt-get install -yq graphviz node-mermaid
+      - run: sudo apt-get update
+      - run: DEBIAN_FRONTEND=noninteractive sudo apt-get install -yq graphviz node-mermaid
       - run: bundle install && bundle exec jekyll build
 
       - name: deploy
