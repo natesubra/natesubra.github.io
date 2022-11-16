@@ -20,6 +20,8 @@ It has a great toolchain, with libraries available for many languages (JS, Java,
 
 It also has fantastic https://github.com/asciidoctor/asciidoctor-pdf[Asciidoctor PDF] toolchain. Which I've used to generate client documentation and reports (maybe a post on that someday)
 
+==== Features
+
 Some of the features that AsciiDoc provides:
 
 . Automatic ordering of lists (_I didn't type these numbers_)
@@ -52,7 +54,9 @@ flowchart TD
 
 For additional details regarding AsciiDoc capabilities, I recommend peeking at the https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[Quick Reference]
 
-=== Visual Studio Code
+=== The Process
+
+==== Writing the content: Visual Studio Code
 
 I write my posts using https://code.visualstudio.com[VSCode]
 
@@ -68,12 +72,12 @@ Something like this:
 [#vscode-setup,link=https://natesubra.com/assets/images/hello-world-vscode.png]
 image::hello-world-vscode_thumb.png[alt="My VSCode Setup",align=center]
 
-=== Jekyll (and jekyll-asciidoc)
+==== Jekyll (and jekyll-asciidoc)
 
 https://jekyllrb.com[Jekyll] is a static website generation tool. It converts markdown
 to html to allow for simple and seamless creation of content. By adding the https://github.com/asciidoctor/jekyll-asciidoc[Jekyll AsciiDoc] plugin, I can write in AsciiDoc, and it renders it to HTML. Letting me have the power and flexibility of AsciiDoc, while simultaneously being able to use a well known and supported static site generator.
 
-=== GitHub
+==== GitHub
 
 I use https://pages.github.com[GitHub Pages] to host the content of this site. The means the complete source code is available on https://github.com/natesubra/natesubra.github.io[GitHub].
 
@@ -83,7 +87,7 @@ You can browse the rendered content in the `gh-pages` branch https://github.com/
 
 If you want to see what this post looked like before it was rendered to HTML, you can see it in AsciiDoc raw format https://raw.githubusercontent.com/natesubra/natesubra.github.io/main/_posts/2022-11-04-hello-world.adoc[here].
 
-=== CloudFlare
+==== CloudFlare
 
 I use https://www.cloudflare.com[CloudFlare] as my domain registrar and to manage DNS for my domain(s).
 
