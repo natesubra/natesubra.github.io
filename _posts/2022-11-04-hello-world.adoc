@@ -8,33 +8,48 @@ My tentative plan is to talk about my thoughts around Red Teaming and the variou
 
 == The blog itself
 
-I wanted to talk about the technology this blog is built on. I've utilized many of the components for years and run many of the components in a professional setting.
+I figured I'd start with with talking about the technology this blog is built on. I've utilized many of the technologies for both personal and professional applications.
 
 === AsciiDoc
 
-This post is written in https://asciidoc.org/[AsciiDoc]. AsciiDoc is a markup language I discovered a few years ago while looking for a better way to generate technical documentation. I'd describe it as being more powerful that Markdown, but not as complex as LaTeX.
+The posts are written in https://asciidoc.org/[AsciiDoc]. AsciiDoc is a markup language I found out about a few years ago while looking for a better way to generate technical documentation. I'd describe it as being more powerful that Markdown, but not as complex as LaTeX. It has a great https://chat.asciidoc.org[OSS community]
 
-Generally I write most of my public based documentation in Markdown. Markdown is the defacto standard for many technical documents. But for complex projects and personal projects I generally choose AsciiDoc for it's feature set and enhanced formatting capabilities. 
+Generally, I write most of my documentation in Markdown due to it being the defacto standard for many projects. It's widely used and most technical folks are at least familiar with the name. For complex projects and personal projects I generally choose AsciiDoc for it's feature set and enhanced formatting capabilities.
 
-There's also the fantastic https://github.com/asciidoctor/asciidoctor-pdf[Asciidoctor PDF] toolchain. Which I've used to generate client documentation and reports (maybe a post on that someday)
+It has a great toolchain, with libraries available for many languages (JS, Java, Ruby to name a few). 
+
+It also has fantastic https://github.com/asciidoctor/asciidoctor-pdf[Asciidoctor PDF] toolchain. Which I've used to generate client documentation and reports (maybe a post on that someday)
 
 Some of the features that AsciiDoc provides:
 
 . Automatic ordering of lists (_I didn't type these numbers_)
 . Being able to reference/include other files with syntax highlighting
 +
-----
+....
 The code below exists in my repo, but the content rendered here is inserted dynamically at generation. This allows me to reference code in my documentation, without requiring me to keep a copy in my post.
-----
+....
 +
 [source,shell,linenums]
-----
+....
 include::assets/2022-11-01_examplecode.sh[]
-----
+....
 . Macros and text replacement
 . Admonitions
 +
 WARNING: This an admonition
++
+. Rendering diagrams as code (Mermaid, Kroki, etc)
++
+.Example Mermaid Diagram
+[mermaid,format=svg]
+....
+graph TD
+    A(VSCode) -->|write post| B(Push to main)
+    B -->|triggers| C{GitHub Actions}
+    C --> D[Jekyll builds site]
+    D -->|content pushed| E[gh-pages branch]
+    E -->|you read| F[natesubra.com]
+....
 
 For additional details regarding AsciiDoc capabilities, I recommend peeking at the https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[Quick Reference]
 
@@ -61,20 +76,27 @@ to html to allow for simple and seamless creation of content. By adding the http
 
 === GitHub
 
-I use https://pages.github.com[GitHub Pages] to host the content of this site. That means the complete source code is available on https://github.com/natesubra/natesubra.github.io[GitHub]. 
+I use https://pages.github.com[GitHub Pages] to host the content of this site. The means the complete source code is available on https://github.com/natesubra/natesubra.github.io[GitHub].
+
+https://github.com/features/actions[GitHub Actions] runs the build (included below) and saves the rendered content to the `gh-pages` branch.
+
+[source,yml,linenums]
+....
+include::.github/workflows/gh-pages.yml[]
+....
+
+You can browse the rendered content in the `gh-pages` branch https://github.com/natesubra/natesubra.github.io/tree/gh-pages[here].
 
 If you want to see what this post looked like before it was rendered to HTML, you can see it in AsciiDoc raw format https://raw.githubusercontent.com/natesubra/natesubra.github.io/main/_posts/2022-11-04-hello-world.adoc[here].
 
-The pages themselves are built by https://github.com/features/actions[GitHub Actions]. 
-
 === CloudFlare
 
-I use https://www.cloudflare.com[CloudFlare] as my domain registrar and to manage DNS for my domain.
+I use https://www.cloudflare.com[CloudFlare] as my domain registrar and to manage DNS for my domain(s).
 
-CloudFlare also provides CDN capabilities. They also terminate SSL, although the source pages are also protected via GitHub.
+CloudFlare also provides CDN capabilities as well as terminate SSL.
 
-Combining this with GitHub Pages allows me to use my domain as a landing page. This site is also available at https://natesubra.github.io
+Combining this with GitHub Pages allows me to use my domain as a landing page. This site is also available at https://natesubra.github.io (which should redirect to https://natesubra.com)
 
 == Wrapping things up
 
-Thanks for reading if you've made it this far. I mostly right for myself but I hope others find it information/entertaining.
+Thanks for reading if you've made it this far. I mostly write for myself but I hope others find it informative/entertaining.
