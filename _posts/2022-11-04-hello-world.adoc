@@ -43,12 +43,11 @@ WARNING: This an admonition
 .Example Mermaid Diagram
 [mermaid,format=svg]
 ....
-graph TD
-    A(VSCode) -->|write post| B(Push to main)
-    B -->|triggers| C{GitHub Actions}
-    C --> D[Jekyll builds site]
-    D -->|content pushed| E[gh-pages branch]
-    E -->|you read| F[natesubra.com]
+flowchart TD
+    A[Deploy to production!] --> B{Where else would we deploy to?};
+    B -- |That's true --> C[Deploy!];
+    C ----> E(???);
+    E --> F[Profit.];
 ....
 
 For additional details regarding AsciiDoc capabilities, I recommend peeking at the https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/[Quick Reference]
