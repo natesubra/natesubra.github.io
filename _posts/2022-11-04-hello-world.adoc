@@ -31,7 +31,7 @@ The code below exists in my repo, but the content rendered here is inserted dyna
 +
 [source,shell,linenums]
 ....
-include::assets/2022-11-01_examplecode.sh[]
+include::../assets/2022-11-01_examplecode.sh[]
 ....
 . Macros and text replacement
 . Admonitions
@@ -41,7 +41,7 @@ WARNING: This an admonition
 . Rendering diagrams as code (Mermaid, Kroki, etc)
 +
 .Example Mermaid Diagram
-[mermaid,format=svg]
+[mermaid,format=svg,width=25%,height=25%]
 ....
 flowchart TD
     A[Deploy to production] --> B(Where else would we deploy?);
