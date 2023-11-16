@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Hello World</title>
+  <meta name="description"
+    content="It&#8217;s ALIVEIt&#8217;s been a long time since I&#8217;ve blogged or written anything publicly. I&#8217;m aiming to change that with this blog.My tentativ...">
+  <link rel="canonical" href="https://natesubra.github.io/2022/11/04/hello-world.html">
+  <link rel="alternate" type="application/rss+xml" title="natesubra" href="https://natesubra.github.io/feed.xml">
+
+  <style>
+    @font-face {
+      font-family: 'JetBrains Mono';
+      src: url('/css/JetBrainsMono-Regular.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'JetBrains Mono';
+      src: url('/css/JetBrainsMono-Bold.woff2') format('woff2');
+      ;
+      font-weight: bold;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      margin-block-start: 0;
+      margin-block-end: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 300;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 80ch;
+      padding-left: 2ch;
+      padding-right: 2ch;
+    }
+
+    .site-header {
+      width: 100%;
+      max-width: 80ch;
+      margin-bottom: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .site-header>nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .site-header .-title {
+      flex-grow: 2;
+    }
+
+    .site-footer {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      width: 100%;
+      max-width: 80ch;
+      margin-top: 1rem;
+      height: 2rem;
+      padding-left: 1ch;
+      padding-right: 1ch;
+    }
+  </style>
+  <link rel="stylesheet" href=" /css/adoc.css">
+  <link rel="stylesheet" href=" /css/rouge-github.css">
+  <link rel="stylesheet" href=" /css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400italic,700,700italic%7COpen+Sans:300">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <nav>
+      <a class="-title" href="/">natesubra</a>
+      
+      
+      <a href="/about/">About</a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </nav>
+  </header>
+
+  <main>
+    <article>
+  <h1>Hello World</h1>
+  <div class="post-meta sect1">Nov 4, 2022</div>
+  <div class="sect1">
+<h2 id="its-alive"><a class="anchor" href="#its-alive"></a>It&#8217;s ALIVE</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It&#8217;s been a long time since I&#8217;ve blogged or written anything publicly. I&#8217;m aiming to change that with this blog.</p>
+</div>
+<div class="paragraph">
+<p>My tentative plan is to talk about my thoughts around Red Teaming and the various information security fields I work in. I also plan to talk about some of the tech I work with and share my security research publicly when possible.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="the-blog-itself"><a class="anchor" href="#the-blog-itself"></a>The blog itself</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I figured I&#8217;d start with with talking about the technology this blog is built on. I&#8217;ve utilized many of the technologies for both personal and professional applications.</p>
+</div>
+<div class="sect2">
+<h3 id="asciidoc"><a class="anchor" href="#asciidoc"></a>AsciiDoc</h3>
+<div class="paragraph">
+<p>The posts are written in <a href="https://asciidoc.org/">AsciiDoc</a>. AsciiDoc is a markup language I found out about a few years ago while looking for a better way to generate technical documentation. I&#8217;d describe it as being more powerful that Markdown, but not as complex as LaTeX. It has a great <a href="https://chat.asciidoc.org">OSS community</a></p>
+</div>
+<div class="paragraph">
+<p>Generally, I write most of my documentation in Markdown due to it being the defacto standard for many projects. It&#8217;s widely used and most technical folks are at least familiar with the name. For complex projects and personal projects I generally choose AsciiDoc for it&#8217;s feature set and enhanced formatting capabilities.</p>
+</div>
+<div class="paragraph">
+<p>It has a great toolchain, with libraries available for many languages (JS, Java, Ruby to name a few).</p>
+</div>
+<div class="paragraph">
+<p>It also has fantastic <a href="https://github.com/asciidoctor/asciidoctor-pdf">Asciidoctor PDF</a> toolchain. Which I&#8217;ve used to generate client documentation and reports (maybe a post on that someday)</p>
+</div>
+<div class="sect3">
+<h4 id="features"><a class="anchor" href="#features"></a>Features</h4>
+<div class="paragraph">
+<p>Some of the features that AsciiDoc provides:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Automatic ordering of lists (<em>I didn&#8217;t type these numbers</em>)</p>
+</li>
+<li>
+<p>Being able to reference/include other files with syntax highlighting</p>
+<div class="literalblock">
+<div class="content">
+<pre>The code below exists in my repo, but the content rendered here is inserted dynamically at generation. This allows me to reference code in my documentation, without requiring me to keep a copy in my post.</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="shell"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="c">#!/usr/bin/env bash</span>
+
+<span class="nb">set</span> <span class="nt">-eou</span>
+
+<span class="nb">printf</span> <span class="s1">'hello world'</span>
+</pre></td></tr></tbody></table></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Macros and text replacement</p>
+</li>
+<li>
+<p>Admonitions</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+This an admonition
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Rendering diagrams as code (Mermaid, Kroki, etc)</p>
+<div class="listingblock">
+<div class="title">Example Mermaid Diagram</div>
+<div class="content">
+<pre>Failed to generate image: mmdc failed:
+Error: Could not find Chromium (rev. 1108766). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npm install`) or
+ 2. your cache path is incorrectly configured (which is: /home/runner/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+    at ChromeLauncher.resolveExecutablePath (file:///usr/local/lib/node_modules/@mermaid-js/mermaid-cli/node_modules/puppeteer-core/lib/esm/puppeteer/node/ProductLauncher.js:263:27)
+    at ChromeLauncher.executablePath (file:///usr/local/lib/node_modules/@mermaid-js/mermaid-cli/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:176:25)
+    at ChromeLauncher.computeLaunchArguments (file:///usr/local/lib/node_modules/@mermaid-js/mermaid-cli/node_modules/puppeteer-core/lib/esm/puppeteer/node/ChromeLauncher.js:93:37)
+    at async ChromeLauncher.launch (file:///usr/local/lib/node_modules/@mermaid-js/mermaid-cli/node_modules/puppeteer-core/lib/esm/puppeteer/node/ProductLauncher.js:57:28)
+    at async run (file:///usr/local/lib/node_modules/@mermaid-js/mermaid-cli/src/index.js:404:19)
+    at async cli (file:///usr/local/lib/node_modules/@mermaid-js/mermaid-cli/src/index.js:184:3)
+
+
+flowchart TD
+    A[Deploy to production] --&gt; B(Where else would we deploy?);
+    B -- True dat --&gt; C[DEPLOY ALL THE THINGS];
+    C ----&gt; E(???);
+    E --&gt; F[Profit];</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>For additional details regarding AsciiDoc capabilities, I recommend peeking at the <a href="https://docs.asciidoctor.org/asciidoc/latest/syntax-quick-reference/">Quick Reference</a></p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="the-process"><a class="anchor" href="#the-process"></a>The Process</h3>
+<div class="sect3">
+<h4 id="writing-the-content-visual-studio-code"><a class="anchor" href="#writing-the-content-visual-studio-code"></a>Writing the content: Visual Studio Code</h4>
+<div class="paragraph">
+<p>I write my posts using <a href="https://code.visualstudio.com">VSCode</a></p>
+</div>
+<div class="paragraph">
+<p>I use the <a href="https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode">AsciiDoc</a> to provide linting, syntax highlighting, and live preview of my content.</p>
+</div>
+<div class="paragraph">
+<p>I use the <a href="https://marketplace.visualstudio.com/items?itemName=ban.spellright">Spell Right</a> to further mitigate my fat fingers.</p>
+</div>
+<div class="paragraph">
+<p>What does that look like?</p>
+</div>
+<div class="paragraph">
+<p>Something like this:</p>
+</div>
+<div id="vscode-setup" class="imageblock text-center">
+<div class="content">
+<a class="image" href="https://natesubra.com/assets/images/hello-world-vscode.png"><img src="/assets/images/hello-world-vscode_thumb.png" alt="My VSCode Setup"></a>
+</div>
+<div class="title">Figure 1. My VSCode Setup</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="jekyll-and-jekyll-asciidoc"><a class="anchor" href="#jekyll-and-jekyll-asciidoc"></a>Jekyll (and jekyll-asciidoc)</h4>
+<div class="paragraph">
+<p><a href="https://jekyllrb.com">Jekyll</a> is a static website generation tool. It converts markdown
+to html to allow for simple and seamless creation of content. By adding the <a href="https://github.com/asciidoctor/jekyll-asciidoc">Jekyll AsciiDoc</a> plugin, I can write in AsciiDoc, and it renders it to HTML. Letting me have the power and flexibility of AsciiDoc, while simultaneously being able to use a well known and supported static site generator.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="github"><a class="anchor" href="#github"></a>GitHub</h4>
+<div class="paragraph">
+<p>I use <a href="https://pages.github.com">GitHub Pages</a> to host the content of this site. The means the complete source code is available on <a href="https://github.com/natesubra/natesubra.github.io">GitHub</a>.</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/features/actions">GitHub Actions</a> runs the build and saves the rendered content to the <code>gh-pages</code> branch.</p>
+</div>
+<div class="paragraph">
+<p>You can browse the rendered content in the <code>gh-pages</code> branch <a href="https://github.com/natesubra/natesubra.github.io/tree/gh-pages">here</a>.</p>
+</div>
+<div class="paragraph">
+<p>If you want to see what this post looked like before it was rendered to HTML, you can see it in AsciiDoc raw format <a href="https://raw.githubusercontent.com/natesubra/natesubra.github.io/main/_posts/2022-11-04-hello-world.adoc">here</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="cloudflare"><a class="anchor" href="#cloudflare"></a>CloudFlare</h4>
+<div class="paragraph">
+<p>I use <a href="https://www.cloudflare.com">CloudFlare</a> as my domain registrar and to manage DNS for my domain(s).</p>
+</div>
+<div class="paragraph">
+<p>CloudFlare also provides CDN capabilities as well as terminate SSL.</p>
+</div>
+<div class="paragraph">
+<p>Combining this with GitHub Pages allows me to use my domain as a landing page. This site is also available at <a href="https://natesubra.github.io" class="bare">https://natesubra.github.io</a> (which should redirect to <a href="https://natesubra.com" class="bare">https://natesubra.com</a>)</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="wrapping-things-up"><a class="anchor" href="#wrapping-things-up"></a>Wrapping things up</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Thanks for reading if you&#8217;ve made it this far. I mostly write for myself but I hope others find it informative/entertaining.</p>
+</div>
+</div>
+</div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      <!-- <a href="https://github.com/natesubra/natesubra.github.io/edit/main/_posts/2022-11-04-hello-world.adoc">
+        <i class="fa fa-edit"></i> fix typo
+      </a> -->
+
+      <a href=" /feed.xml">
+        <i class="fa-sharp fa-solid fa-square-rss"></i>
+      </a>
+
+      <a href="https://keybase.io/nathansubra">
+        <i class="fa-brands fa-keybase"></i>
+      </a>
+
+      <a href="https://twitter.com/natesubra">
+        <i class="fa-brands fa-square-twitter"></i>
+      </a>
+
+      <a href="https://github.com/natesubra">
+        <i class="fa-brands fa-square-github"></i>
+      </a>
+
+      <a rel="me" href="https://infosec.exchange/@natesubra">
+        <i class="fa-brands fa-mastodon"></i>
+      </a>
+    </p>
+  </footer>
+</body>
+
+</html>

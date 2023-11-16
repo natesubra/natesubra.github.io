@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Scanning custom UDP protocols with masscan</title>
+  <meta name="description"
+    content="One of my security researcher acquaintances (hi Reid!) was working on an interesting problem set the other day.The goal was to identify hosts on the internet...">
+  <link rel="canonical" href="https://natesubra.github.io/til/2023/11/16/scan-custom-udp-protocol-masscan.html">
+  <link rel="alternate" type="application/rss+xml" title="natesubra" href="https://natesubra.github.io/feed.xml">
+
+  <style>
+    @font-face {
+      font-family: 'JetBrains Mono';
+      src: url('/css/JetBrainsMono-Regular.woff2') format('woff2');
+    }
+
+    @font-face {
+      font-family: 'JetBrains Mono';
+      src: url('/css/JetBrainsMono-Bold.woff2') format('woff2');
+      ;
+      font-weight: bold;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      margin-block-start: 0;
+      margin-block-end: 0;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-weight: 300;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 80ch;
+      padding-left: 2ch;
+      padding-right: 2ch;
+    }
+
+    .site-header {
+      width: 100%;
+      max-width: 80ch;
+      margin-bottom: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .site-header>nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .site-header .-title {
+      flex-grow: 2;
+    }
+
+    .site-footer {
+      display: flex;
+      justify-content: center;
+      align-items: baseline;
+      width: 100%;
+      max-width: 80ch;
+      margin-top: 1rem;
+      height: 2rem;
+      padding-left: 1ch;
+      padding-right: 1ch;
+    }
+  </style>
+  <link rel="stylesheet" href=" /css/adoc.css">
+  <link rel="stylesheet" href=" /css/rouge-github.css">
+  <link rel="stylesheet" href=" /css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400italic,700,700italic%7COpen+Sans:300">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <nav>
+      <a class="-title" href="/">natesubra</a>
+      
+      
+      <a href="/about/">About</a>
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+    </nav>
+  </header>
+
+  <main>
+    <article>
+  <h1>Scanning custom UDP protocols with masscan</h1>
+  <div class="post-meta sect1">Nov 16, 2023</div>
+  <div class="paragraph">
+<p>One of my security researcher acquaintances (hi Reid!) was working on an interesting problem set the other day.</p>
+</div>
+<div class="paragraph">
+<p>The goal was to identify hosts on the internet running a custom UDP protocol. The problem was custom scanning at scale is kind of a pain. You&#8217;re looking at writing a decent amount of C to scan for what is often a one off.</p>
+</div>
+<div class="paragraph">
+<p>Reid discovered that Nmap has a <a href="https://nmap.org/book/nmap-payloads.html">feature</a> that allows you to specify a custom UDP payload to send to a host:</p>
+</div>
+<div class="paragraph">
+<p>This is great, but Nmap is single threaded and not the fastest scanner out there (by design). We want to scan at scale, so we need something faster.</p>
+</div>
+<div class="paragraph">
+<p>Well, masscan supports many Nmap (via libpcap), and checking the masscan man file we find <a href="https://github.com/robertdavidgraham/masscan/blob/2a547f72cee47f8a47d367c7ef43051455401e3e/doc/masscan.8.markdown?plain=1#L124">this</a> gem:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="man"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="code"><pre>  * `--nmap-payloads FILE`: read in a file in the same format as
+    the nmap file `nmap-payloads`. This contains UDP payload, so that we
+	can send useful UDP packets instead of empty ones. Similar to
+	`--pcap-payloads`.
+</pre></td></tr></tbody></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So, we can use masscan to scan for custom UDP protocols by creating an nmap-payloads file with our port/payload and then pass that file to masscan.</p>
+</div>
+<div class="paragraph">
+<p>Lets create a new nmap payload file with the following contents:</p>
+</div>
+<div class="listingblock">
+<div class="title">my-payload-file.txt</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno">1
+2
+3
+</pre></td><td class="code"><pre># we've been trying to reach you about your cars extended warranty
+udp 1234
+    "\x77\x65\x27\x76\x65\x20\x62\x65\x65\x6e\x20\x74\x72\x79\x69\x6e\x67\x20\x74\x6f\x20\x72\x65\x61\x63\x68\x20\x79\x6f\x75\x20\x61\x62\x6f\x75\x74\x20\x79\x6f\x75\x72\x20\x63\x61\x72\x73\x20\x65\x78\x74\x65\x6e\x64\x65\x64\x20\x77\x61\x72\x72\x61\x6e\x74\x79"
+</pre></td></tr></tbody></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and then leverage masscan to send that payload when scanning:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="sh"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno">1
+</pre></td><td class="code"><pre>masscan &lt;target_range&gt; <span class="nt">--nmap-payloads</span> my-payload-file.txt <span class="nt">-p</span> U:1234
+</pre></td></tr></tbody></table></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Masscan also has the option to parse a pcap and utilize responses from that when scanning. Save some typing and potentially some fat fingers.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="text"><table class="linenotable"><tbody><tr><td class="linenos gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>  * `--pcap-payloads FILE`: read packets from a libpcap file containing packets
+    and extract the UDP payloads, and associate those payloads with the
+	destination port. These payloads will then be used when sending UDP
+	packets with the matching destination port. Only one payload will
+	be remembered per port. Similar to `--nmap-payloads`.
+</pre></td></tr></tbody></table></code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+These are documented in the man page, but not in the help <code>masscan -h</code> output, always check your man pages and source code to know the true capabilities of your tools
+</td>
+</tr>
+</table>
+</div>
+</article>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      <!-- <a href="https://github.com/natesubra/natesubra.github.io/edit/main/_posts/2023-11-16-scan-custom-udp-protocol-masscan.adoc">
+        <i class="fa fa-edit"></i> fix typo
+      </a> -->
+
+      <a href=" /feed.xml">
+        <i class="fa-sharp fa-solid fa-square-rss"></i>
+      </a>
+
+      <a href="https://keybase.io/nathansubra">
+        <i class="fa-brands fa-keybase"></i>
+      </a>
+
+      <a href="https://twitter.com/natesubra">
+        <i class="fa-brands fa-square-twitter"></i>
+      </a>
+
+      <a href="https://github.com/natesubra">
+        <i class="fa-brands fa-square-github"></i>
+      </a>
+
+      <a rel="me" href="https://infosec.exchange/@natesubra">
+        <i class="fa-brands fa-mastodon"></i>
+      </a>
+    </p>
+  </footer>
+</body>
+
+</html>
