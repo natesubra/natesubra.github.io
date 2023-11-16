@@ -1,0 +1,55 @@
+= Scanning custom UDP protocols with masscan
+Nate Subra
+:page-category: TIL
+:page-tags: [TIL, methodology, workflow, scanning]
+:page-published: true
+
+One of my security researcher acquaintances (hi Reid!) was working on an interesting problem set the other day.
+
+The goal was to identify hosts on the internet running a custom UDP protocol. The problem was custom scanning at scale is kind of a pain. You're looking at writing a decent amount of C to scan for what is often a one off. 
+
+Reid discovered that Nmap has a https://nmap.org/book/nmap-payloads.html[feature] that allows you to specify a custom UDP payload to send to a host:
+
+This is great, but Nmap is single threaded and not the fastest scanner out there (by design). We want to scan at scale, so we need something faster.
+
+Well, masscan supports many Nmap (via libpcap), and checking the masscan man file we find https://github.com/robertdavidgraham/masscan/blob/2a547f72cee47f8a47d367c7ef43051455401e3e/doc/masscan.8.markdown?plain=1#L124[this] gem:
+
+[source,man]
+....
+  * `--nmap-payloads FILE`: read in a file in the same format as 
+    the nmap file `nmap-payloads`. This contains UDP payload, so that we
+	can send useful UDP packets instead of empty ones. Similar to
+	`--pcap-payloads`.
+....
+
+So, we can use masscan to scan for custom UDP protocols by creating an nmap-payloads file with our port/payload and then pass that file to masscan.
+
+Lets create a new nmap payload file with the following contents:
+
+.my-payload-file.txt
+[source,text]
+....
+# we've been trying to reach you about your cars extended warranty
+udp 1234
+    "\x77\x65\x27\x76\x65\x20\x62\x65\x65\x6e\x20\x74\x72\x79\x69\x6e\x67\x20\x74\x6f\x20\x72\x65\x61\x63\x68\x20\x79\x6f\x75\x20\x61\x62\x6f\x75\x74\x20\x79\x6f\x75\x72\x20\x63\x61\x72\x73\x20\x65\x78\x74\x65\x6e\x64\x65\x64\x20\x77\x61\x72\x72\x61\x6e\x74\x79"
+....
+
+and then leverage masscan to send that payload when scanning:
+
+[source,sh]
+....
+masscan <target_range> --nmap-payloads my-payload-file.txt -p U:1234
+....
+
+Masscan also has the option to parse a pcap and utilize responses from that when scanning. Save some typing and potentially some fat fingers.
+
+[source,text]
+....
+  * `--pcap-payloads FILE`: read packets from a libpcap file containing packets
+    and extract the UDP payloads, and associate those payloads with the
+	destination port. These payloads will then be used when sending UDP
+	packets with the matching destination port. Only one payload will
+	be remembered per port. Similar to `--nmap-payloads`.
+....
+
+NOTE: These are documented in the man page, but not in the help `masscan -h` output, always check your man pages and source code to know the true capabilities of your tools
